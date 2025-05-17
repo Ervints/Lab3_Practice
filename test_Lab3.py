@@ -28,3 +28,24 @@ def test_bubble_sort_invalid():
     result = Lab3.bubble_sort(input_arr, 3)
 
     assert (result == [])
+
+def test_bubble_sort_length_zero():
+    input_arr = []
+
+    result = Lab3.bubble_sort(input_arr, 0)
+
+    assert (result == 0)
+
+def test_bubble_sort_length_over_ten():
+    input_arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+
+    result = Lab3.bubble_sort(input_arr, 0)
+
+    assert (result == 1)
+
+def test_bubble_sort_non_integer():
+    input_arr = [10, 2, 10.2, 5, 3.3]
+
+    result = Lab3.bubble_sort(input_arr, 0)
+
+    assert (result == 2)
