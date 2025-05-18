@@ -21,3 +21,5 @@ def test_cost_of_fruit():
                 if cost != cost_list[key]:
                     check = 1
     assert (check == 0)
+
+#hello
