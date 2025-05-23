@@ -1,3 +1,5 @@
+import math
+
 # Define a dictionary to store employee information
 employee_data = [
     {"name": "John", "age": 30, "department": "Sales", "salary": 50000},
@@ -18,19 +20,24 @@ def get_employees_by_age_range(age_lower_limit, age_upper_limit):
 
     return result
 
-def calculate_average_salary(employee_data):
+def calculate_average_salary():
     total = 0
     average = 0
     for salary in employee_data:
         total = total + int(salary["salary"])
     average = total / len(employee_data)
+    average = math.ceil(average)
     #add your implementation to calculate here
 
-    return average, total
+    return average
 
 def get_employees_by_dept(department):
     result = []
-
+    print("People in the", department, "department:")
+    for names in employee_data:
+        if names["department"] == department:
+            result.append(names)
+    print(result)
     # Add your implementation from here
 
 
@@ -61,7 +68,7 @@ def display_main_menu():
 
     print("Q - Quit")
 
-    option = input("Enter selection =>")
+    option = input("Enter selection => ")
 
     if option == '1':
         display_all_records()
@@ -72,7 +79,7 @@ def display_main_menu():
 
     elif option == '3':
         age_lower_limit = input("age (Lower Limit) = ")
-        age_upper_limit = input("age (Uper Limit) = ")
+        age_upper_limit = input("age (Upper Limit) = ")
         employee_info = get_employees_by_age_range(age_lower_limit, age_upper_limit)
         display_records(employee_info)
 
@@ -82,7 +89,7 @@ def display_main_menu():
         employee_info = get_employees_by_dept(department)
         display_records(employee_info)
 
-    elif option == 'Q':
+    elif option.upper() == 'Q':
         quit()
 
 def main():

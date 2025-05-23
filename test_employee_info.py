@@ -1,15 +1,24 @@
 import employee_info as eInfo
 
 def test_calculate_aerage_salary():
-    employee_data = [
-    {"name": "John", "age": 30, "department": "Sales", "salary": 5},
-    {"name": "Jane", "age": 25, "department": "Marketing", "salary": 10},
-    {"name": "Mary", "age": 23, "department": "Marketing", "salary": 10},
-    {"name": "Chloe",  "age": 35, "department": "Engineering", "salary": 15},
-    {"name": "Mike", "age": 32, "department": "Engineering", "salary": 10},
-    {"name": "Peter", "age": 40, "department": "Sales", "salary": 10}
-    ]
-    res_avg, res_total = eInfo.calculate_average_salary(employee_data)
+    result = eInfo.calculate_average_salary()
 
-    assert (res_avg == 10)
-    assert (res_total == 60)
+    assert (result == 60167)
+
+def test_get_employee_by_dept():
+    result = []
+    department = "Marketing"
+    
+    result = eInfo.get_employees_by_dept(department)
+
+    assert (result == [{"name": "Jane", "age": 25, "department": "Marketing", "salary": 60000},
+    {"name": "Mary", "age": 23, "department": "Marketing", "salary": 56000}])
+
+def test_employees_by_age_range():
+    lowLimit = 25
+    highLimit = 35
+    result = []
+
+    result = eInfo.get_employees_by_age_range(lowLimit, highLimit)
+
+    assert (result == [{"name": "John", "age": 30, "department": "Sales", "salary": 50000},{"name": "Mike", "age": 32, "department": "Engineering", "salary": 65000}])
